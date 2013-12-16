@@ -7,14 +7,14 @@ if (isset($database)) {
 }
 
 
-echo $database->mysql_prep("It's working?<br />");
+echo $database->escape_value("It's working?<br />");
 
-//$sql = "INSERT INTO users (id, username, password, first_name, last_name) VALUES (2, 'kskoglund', 'secretpwd', 'Kevin', 'Skoglund')";
-//$result = $database->query($sql);
+$sql = "INSERT INTO users (id, username, password, first_name, last_name) VALUES (2, 'kskoglund', 'secretpwd', 'Kevin', 'Skoglund')";
+$result = $database->query($sql);
 
 $sql = "SELECT * FROM users WHERE id = 1";
 $result_set = $database->query($sql);
-$found_user = mysql_fetch_array($result_set);
+$found_user = $database->fetch_array($result_set);
 
 echo $found_user['username'];
 
